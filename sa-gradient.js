@@ -5,6 +5,9 @@
       background-image: linear-gradient(to left, rgb(0, 163, 224) 0%, rgb(0, 163, 224) 10%, rgb(132, 189, 0) 90%, rgb(132, 189, 0) 100%) !important;
       background-color: transparent !important;
     }
+    header ul.bg-nav-appintranet {
+      background-color: transparent !important;
+    }
   `;
 
   function injectStyle() {
