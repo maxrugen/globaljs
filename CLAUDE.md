@@ -7,9 +7,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 A flat collection of standalone JavaScript snippets injected into a host intranet platform via
 its **Global JS** feature. There is no build step, no bundler, no package manager, and no test
 runner — each `.js` file at the repository root is a self-contained deliverable that is served
-verbatim to browsers through its GitHub raw URL.
+verbatim to browsers through jsDelivr.
 
-The repository is **public on purpose**: the GitHub raw URLs are the distribution mechanism.
+The repository is **public on purpose**: the jsDelivr URLs (`https://cdn.jsdelivr.net/gh/maxrugen/globaljs@main/<file>.js`)
+are the distribution mechanism. The host platform's CSP blocks `raw.githubusercontent.com`, so
+GitHub raw URLs are **not** a usable injection target — always use jsDelivr.
 
 ## Runtime model — the constraints that shape every script
 
@@ -23,9 +25,10 @@ The repository is **public on purpose**: the GitHub raw URLs are the distributio
   navigation.
 - A script that throws can break unrelated page behavior. Fail soft: wrap logic so a missing
   element or API is a no-op, not an uncaught error.
-- Distribution is by URL, so changes are effectively a deploy. `main` raw URLs roll out to every
-  consuming instance once GitHub's raw CDN cache expires (~5 min); tagged URLs let you pin a
-  stable version. Prefer a git tag when a change must be controlled.
+- Distribution is by URL, so changes are effectively a deploy. `@main` jsDelivr URLs roll out to
+  every consuming instance within jsDelivr's ~12h cache window (purge via
+  `https://purge.jsdelivr.net/gh/...`); tagged URLs let you pin a stable version. Prefer a git tag
+  when a change must be controlled.
 
 ## Conventions for adding a script
 
@@ -37,7 +40,7 @@ The repository is **public on purpose**: the GitHub raw URLs are the distributio
 
 ## Workflow
 
-No install/build/lint/test commands exist. Validate a script by injecting its GitHub raw URL
+No install/build/lint/test commands exist. Validate a script by injecting its jsDelivr URL
 into the platform's Global JS field (or a local HTML page that mimics the target DOM) and
 checking the browser console.
 
