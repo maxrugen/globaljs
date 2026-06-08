@@ -34,4 +34,4 @@ every script is reachable through its GitHub raw URL and can be hot-linked direc
 
 | Script | Description |
 | ------ | ----------- |
-| _none yet_ | |
+| [`sa-gradient.js`](sa-gradient.js) | Overrides the navigation header background with a blue-to-green linear gradient, re-applying on SPA navigation. |
