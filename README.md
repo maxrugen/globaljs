@@ -11,22 +11,22 @@ Scripts must be referenced through jsDelivr, **not** GitHub raw URLs — the hos
 Content Security Policy blocks `raw.githubusercontent.com`, while jsDelivr is whitelisted.
 
 **Always pin a version tag** rather than tracking `@main`, so a push can't silently change what a
-live instance loads. The current release is `v1.2.0`.
+live instance loads. The current release is `v1.3.0`.
 
 1. Pick the script you want, e.g. `example.js`.
 2. Reference its jsDelivr URL pinned to a tag:
 
    ```
-   https://cdn.jsdelivr.net/gh/maxrugen/globaljs@v1.2.0/example.js
+   https://cdn.jsdelivr.net/gh/maxrugen/globaljs@v1.3.0/example.js
    ```
 
 3. Inject it via the platform's Global JS field, e.g.:
 
    ```html
-   <script src="https://cdn.jsdelivr.net/gh/maxrugen/globaljs@v1.2.0/example.js" defer></script>
+   <script src="https://cdn.jsdelivr.net/gh/maxrugen/globaljs@v1.3.0/example.js" defer></script>
    ```
 
-4. To roll out a change, cut a new tag (`git tag v1.2.0 && git push --tags`) and bump the version
+4. To roll out a change, cut a new tag (`git tag v1.3.0 && git push --tags`) and bump the version
    in the consuming instance's URL.
 
 > **Why pin:** jsDelivr caches a tagged URL permanently (tags are immutable), giving deterministic
