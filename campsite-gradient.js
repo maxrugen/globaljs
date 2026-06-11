@@ -10,7 +10,10 @@
     if (shadow.querySelector('#' + STYLE_ID)) return;
     const style = document.createElement('style');
     style.id = STYLE_ID;
-    style.textContent = ':host { --sb-color-white: transparent !important; }';
+    // Make only the page backdrop transparent so the gradient shows through.
+    // Do NOT touch --sb-color-white: that token also paints every card/news
+    // surface, and zeroing it turns the cards transparent too.
+    style.textContent = ':host { background: transparent !important; } .sb-designer-content.root { background-color: transparent !important; }';
     shadow.appendChild(style);
   }
 
